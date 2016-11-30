@@ -1,6 +1,6 @@
 @startuml
 skinparam monochrome true
-
+'left to right direction
 title "PSSM"\nUse Case Diagram
 
 rectangle "staff fullfilment system" as S {
@@ -20,9 +20,9 @@ FFSR ..> FSR : <<include>>
 
 C - FFSR
 C - FSR
-C - OSR
-CM - OSR
-PSSM - PSM
+OSR - C
+OSR - CM
+PSM - PSSM
 PSSM - FSR
 TE - FSR
 @enduml
