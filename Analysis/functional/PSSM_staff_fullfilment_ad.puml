@@ -1,0 +1,66 @@
+@startuml
+skinparam monochrome true
+title "PSSM staff fullfilment"\nActivity Diagram
+
+start
+:Issue Staffing Request;
+note left
+  Client
+end note
+:Check contract;
+note left
+  Non-expired
+  Employee listed in contract
+  Fee falls in range
+end note
+if (is valid?)
+  :Create outstanding
+  Staffing Request;
+  while (look for prospective\n employee?) is (yes)
+    :Check for qualified employee;
+    note right
+      Type of Staff
+      Experience
+      Qualifications
+    end note
+    if (is found?)
+      :Mark as reserved;
+      :Contact prospective
+      employee;
+      if (agreed?)
+        :Mark as placed;
+        :Send
+        Request and Bill
+        to Client;
+      else
+          :Unmark
+          reserved;
+          note right
+            Keep looking
+            for prospective employee
+          end note
+      endif
+    else
+      :create memo;
+    endif
+  endwhile (no)
+else
+  :Write/File letter to client;
+  end
+endif
+:check papers;
+note left
+  Staffing Request
+  Memo(if any)
+  Bill
+end note
+if (is request fill?)
+  :Close open
+  Staffing request;
+else
+  :Notify client;
+endif
+:File papers;
+stop
+
+@enduml

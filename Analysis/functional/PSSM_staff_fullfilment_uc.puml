@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+
+title "PSSM"\nUse Case Diagram
+
+rectangle "staff fullfilment system" as S {
+    (Fulfill staffing request) as FFSR
+    (Open staffing request) as OSR
+    (Place staff members) as PSM
+    (Fill staffing request) as FSR
+}
+FFSR ..> OSR : <<include>>
+FFSR ..> PSM : <<include>>
+FFSR ..> FSR : <<include>>
+
+:Contract \nManager: as CM
+:Client: as C
+:PSSM Employee: as PSSM
+:Temporary Employee: as TE
+
+C - FFSR
+C - FSR
+C - OSR
+CM - OSR
+PSSM - PSM
+PSSM - FSR
+TE - FSR
+@enduml
