@@ -5,6 +5,14 @@ TODO
 [ ]-table of contents
 [ ]-intro (prob. statement + purpose)
 [ ]-body
+[ ] -description
+[ ] -effort
+[ ] -analysis
+[ ] -design
+[ ] -user interface
+[ ] -physical architecture
+[ ] -testing
+[ ] -change management 
 [ ]-conclusion (summary)
 
 [ ]**Project Contents
@@ -46,4 +54,3 @@ TODO
 [ ]-user acceptance test plan
 
 [ ]conversion and chg. mgmt. plan
-
