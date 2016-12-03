@@ -1,13 +1,13 @@
 @startuml
 skinparam monochrome true
 'left to right direction
-title "PSSM"\nUse Case Diagram
+title PSSM\nUse Case Diagram
 
-rectangle "staff fullfilment system" as S {
-    (Fulfill staffing request) as FFSR
-    (Open staffing request) as OSR
-    (Place staff members) as PSM
-    (Fill staffing request) as FSR
+rectangle "Temporary Staff Fullfilment System" as S {
+    (Fulfill\n Staffing Request) as FFSR
+    (Open\n Staffing Request) as OSR
+    (Place\n Staff Members) as PSM
+    (Fill\n Staffing Request) as FSR
 }
 FFSR ..> OSR : <<include>>
 FFSR ..> PSM : <<include>>
@@ -15,14 +15,14 @@ FFSR ..> FSR : <<include>>
 
 :Contract \nManager: as CM
 :Client: as C
-:PSSM Employee: as PSSM
+:PSSM Employee: as PE
 :Temporary Employee: as TE
 
-C - FFSR
-C - FSR
+FSR -down- TE
+OSR -down- CM
+FFSR - C
 OSR - C
-OSR - CM
-PSM - PSSM
-PSSM - FSR
-TE - FSR
+PSM - PE
+FSR - PE
+
 @enduml
