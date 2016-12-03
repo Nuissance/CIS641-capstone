@@ -13,10 +13,10 @@ FFSR ..> OSR : <<include>>
 FFSR ..> PSM : <<include>>
 FFSR ..> FSR : <<include>>
 
-:Contract \nManager: as CM
-:Client: as C
-:PSSM Employee: as PE
-:Temporary Employee: as TE
+:Contract Manager\n: as CM
+:Client\n: as C
+:PSSM Employee\n: as PE
+:Temporary Employee\n: as TE
 
 FSR -down- TE
 OSR -down- CM

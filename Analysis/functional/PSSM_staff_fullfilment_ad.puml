@@ -1,57 +1,58 @@
 @startuml
 skinparam monochrome true
-title "PSSM staff fullfilment"\nActivity Diagram
+title PSSM Temporary Staff Fullfilment\nActivity Diagram
 
 start
-:Issue Staffing Request;
+  :Receive Staffing Request;
 note left
-  Client
+  TRIGGER: From Client
 end note
-:Check contract;
+:Check Contract;
 note left
-  Non-expired
-  Employee listed in contract
+  Not expired
+  Position covered
   Fee falls in range
 end note
-if (is valid?)
+if (is valid?) then (yes)
   :Create outstanding
   Staffing Request;
-  while (look for prospective\n employee?) is (yes)
-    :Check for qualified employee;
+  while (   Employee\nsearch active?) is (yes)
+    :Check for qualified Employee;
     note right
       Type of Staff
       Experience
       Qualifications
     end note
-    if (is found?)
+    if (is found?) then (yes)
       :Mark as reserved;
       :Contact prospective
-      employee;
-      if (agreed?)
+      Employee;
+      if (agreed?) then(yes)
         :Mark as placed;
         :Send
         Request and Bill
         to Client;
-      else
+      else (no)
           :Unmark
           reserved;
           note right
             Keep looking
-            for prospective employee
+            for prospective Employee
           end note
       endif
-    else
-      :create memo;
+    else (no)
+      :Create UTF Memo;
     endif
   endwhile (no)
-else
-  :Write/File letter to client;
+else (no)
+  :Return Staffing Request\nwith Why Letter;
+  :File Why Letter;
   end
 endif
 :check papers;
 note left
   Staffing Request
-  Memo(if any)
+  UTF Memo(if any)
   Bill
 end note
 if (is request fill?)
