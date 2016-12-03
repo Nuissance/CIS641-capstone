@@ -1,0 +1,49 @@
+TODO
+----
+[ ]**Project Paper
+[ ]-title page
+[ ]-table of contents
+[ ]-intro (prob. statement + purpose)
+[ ]-body
+[ ]-conclusion (summary)
+
+[ ]**Project Contents
+[ ]-textual description
+
+[ ]effort description
+[ ]-use case points analysis
+
+[ ]detailed analysis
+[x]-use case diagram (given)
+[x]-activity diagram
+[ ]-overview and detail use case description
+[ ]-CRC cards
+[ ]-class diagram
+[ ]-sequence diagram
+[ ]-communication diagram
+[ ]-behavioral state machine
+[ ]-CRUD analysis
+[ ]-V&V functional, structural, behavioral models
+
+[ ]detailed design
+[ ]-data management layer
+[ ]-class diagram?
+
+[ ]HCI design
+[ ]-use scenarios
+[ ]-windows navigation diagrams
+[ ]-storyboards
+
+[ ]physical architecture design
+[ ]-system deployment diagram
+[ ]-non-functional req. descriptions
+[ ]	-operational
+[ ]	-performance
+[ ]	-security
+[ ]	-cultural and political
+
+[ ]system test plan
+[ ]-user acceptance test plan
+
+[ ]conversion and chg. mgmt. plan
+
