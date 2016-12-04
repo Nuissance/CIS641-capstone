@@ -42,13 +42,13 @@ TODO
 [ ]-windows navigation diagrams
 [ ]-storyboards
 
-[ ]physical architecture design
+[x]physical architecture design
 [x]-system deployment diagram
-[ ]-non-functional req. descriptions
-[ ] -operational
-[ ] -performance
-[ ] -security
-[ ] -cultural and political
+[x]-non-functional req. descriptions
+[x] -operational
+[x] -performance
+[x] -security
+[x] -cultural and political
 
 [x]system test plan
 [x]-user acceptance test plan
