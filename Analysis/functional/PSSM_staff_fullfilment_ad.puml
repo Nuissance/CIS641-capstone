@@ -47,8 +47,10 @@ if (demand is valid?) then (yes)
     endif
   endwhile (no)
 else (no)
-  :Return Staffing Request\nwith Why Letter;
-  :File Why Letter;
+  :return Staffing Request
+  with Why Letter to Client;
+  :file Why Letter
+  with Contract office;
   end
 endif
 :send document
