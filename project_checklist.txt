@@ -45,25 +45,13 @@ TODO
 [ ]physical architecture design
 [ ]-system deployment diagram
 [ ]-non-functional req. descriptions
-[ ]	-operational
-[ ]	-performance
-[ ]	-security
-[ ]	-cultural and political
+[ ] -operational
+[ ] -performance
+[ ] -security
+[ ] -cultural and political
 
 [ ]system test plan
 [ ]-user acceptance test plan
 
 [ ]conversion and chg. mgmt. plan
 
-
-POTENTIAL CLASSES
------------------
-TempEmployee
-Staffing Request
-Contract
-
-TEST CASES
-----------
-CRUD Contract
-CRUD Temp Employee
-CRUD + Close Staffing Request
