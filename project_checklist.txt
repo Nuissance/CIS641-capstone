@@ -25,7 +25,7 @@ TODO
 [x]-use case diagram (given)
 [x]-activity diagram
 [x]-overview and detail use case descriptions
-[ ]-CRC cards
+[x]-CRC cards
 [ ]-class diagram
 [ ]-sequence diagram
 [ ]-communication diagram
