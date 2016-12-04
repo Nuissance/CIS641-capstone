@@ -43,7 +43,7 @@ TODO
 [ ]-storyboards
 
 [ ]physical architecture design
-[ ]-system deployment diagram
+[x]-system deployment diagram
 [ ]-non-functional req. descriptions
 [ ] -operational
 [ ] -performance
