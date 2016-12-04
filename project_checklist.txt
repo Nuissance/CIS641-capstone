@@ -5,8 +5,8 @@ TODO
 [ ]-table of contents
 [x]-intro (prob. statement + purpose)
 [ ]-body
-[ ] -description
-[ ] -effort
+[x] -description
+[x] -effort
 [ ] -analysis
 [ ] -design
 [ ] -user interface
@@ -16,10 +16,10 @@ TODO
 [ ]-conclusion (summary)
 
 [ ]**Project Contents
-[ ]-textual description
+[x]-textual description (requirements)
 
-[ ]effort description
-[ ]-use case points analysis
+[x]effort description
+[x]-use case points analysis
 
 [ ]detailed analysis
 [x]-use case diagram (given)
