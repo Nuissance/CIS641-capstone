@@ -1,9 +1,9 @@
 TODO
 ----
 [ ]**Project Paper
-[ ]-title page
+[x]-title page
 [ ]-table of contents
-[ ]-intro (prob. statement + purpose)
+[x]-intro (prob. statement + purpose)
 [ ]-body
 [ ] -description
 [ ] -effort
@@ -58,6 +58,12 @@ TODO
 
 POTENTIAL CLASSES
 -----------------
-Temp Employee
+TempEmployee
 Staffing Request
-Database
+Contract
+
+TEST CASES
+----------
+CRUD Contract
+CRUD Temp Employee
+CRUD + Close Staffing Request
