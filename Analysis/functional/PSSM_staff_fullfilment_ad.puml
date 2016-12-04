@@ -1,6 +1,6 @@
 @startuml
 skinparam monochrome true
-title PSSM Temporary Staff Fullfilment\nActivity Diagram
+title PSSM\nTemporary Staff Fullfilment System\nActivity Diagram
 
 start
   :receive staffing demand;
@@ -68,7 +68,12 @@ else
   :notify Client;
 endif
 :file paperwork
-with Contract office;
+in Contract office;
+note left
+  Staffing Request
+  UTF Memo
+  Bill
+end note
 stop
 
 @enduml
