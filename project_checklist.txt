@@ -24,7 +24,7 @@ TODO
 [ ]detailed analysis
 [x]-use case diagram (given)
 [x]-activity diagram
-[ ]-overview and detail use case description
+[x]-overview and detail use case descriptions
 [ ]-CRC cards
 [ ]-class diagram
 [ ]-sequence diagram
@@ -54,3 +54,10 @@ TODO
 [ ]-user acceptance test plan
 
 [ ]conversion and chg. mgmt. plan
+
+
+POTENTIAL CLASSES
+-----------------
+Temp Employee
+Staffing Request
+Database

@@ -3,45 +3,47 @@ skinparam monochrome true
 title PSSM Temporary Staff Fullfilment\nActivity Diagram
 
 start
-  :Receive Staffing Request;
+  :receive staffing demand;
 note left
-  TRIGGER: From Client
+  TRIGGER: from Client
 end note
-:Check Contract;
+:check contract;
 note left
   Not expired
   Position covered
   Fee falls in range
 end note
-if (is valid?) then (yes)
-  :Create outstanding
+if (demand is valid?) then (yes)
+  :Open an outstanding
   Staffing Request;
-  while (   Employee\nsearch active?) is (yes)
-    :Check for qualified Employee;
+  while (   employee\nsearch active?) is (yes)
+    :check employee database
+    for suitable candidate;
     note right
-      Type of Staff
+      Type of staff
       Experience
       Qualifications
     end note
     if (is found?) then (yes)
-      :Mark as reserved;
-      :Contact prospective
-      Employee;
-      if (agreed?) then(yes)
-        :Mark as placed;
-        :Send
+      :mark candidate
+      "reserved";
+      :contact candidate;
+      if (placement agreed?) then (yes)
+        :mark candidate
+        "placed";
+        :send Staffing
         Request and Bill
         to Client;
       else (no)
-          :Unmark
-          reserved;
+          :unmark candidate
+          "reserved";
           note right
             Keep looking
             for prospective Employee
           end note
       endif
     else (no)
-      :Create UTF Memo;
+      :create UTF memo;
     endif
   endwhile (no)
 else (no)
@@ -49,19 +51,22 @@ else (no)
   :File Why Letter;
   end
 endif
-:check papers;
+:send document
+copies to Contract
+Manager;
 note left
   Staffing Request
-  UTF Memo(if any)
+  UTF Memo (if any)
   Bill
 end note
-if (is request fill?)
+if (is demand met?)
   :Close open
-  Staffing request;
+  Staffing Request;
 else
-  :Notify client;
+  :notify Client;
 endif
-:File papers;
+:file paperwork
+with Contract office;
 stop
 
 @enduml
