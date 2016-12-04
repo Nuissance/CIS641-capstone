@@ -42,5 +42,6 @@ TEST CASES
 CRUD Contract
 CRUD TempEmployee
 CRUD StaffingRequest
-login/logout
+
+login/logout + reset password
 
