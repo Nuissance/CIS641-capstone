@@ -30,7 +30,7 @@ TODO
 [ ]-sequence diagram
 [ ]-communication diagram
 [ ]-behavioral state machine
-[ ]-CRUD analysis
+[ ]-CRUD matrix
 [ ]-V&V functional, structural, behavioral models
 
 [ ]detailed design
@@ -50,8 +50,8 @@ TODO
 [ ] -security
 [ ] -cultural and political
 
-[ ]system test plan
-[ ]-user acceptance test plan
+[x]system test plan
+[x]-user acceptance test plan
 
 [ ]conversion and chg. mgmt. plan
 
