@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+title Professional and Scientific\nStaff Management\n
+
+
+class TempEmployee{
+-EmployeeID : int
+-Status : String
+-Name : String
+-Address : String
+-Phone : String
+-Email : String
+-YearsExperience : int
+-Degree : String
+-Qualifications : { free text field }
+-ExpectedPay : float
+-CurrentContract : int {ContractID}
+-PreviousContracts : [int array] {ContractID}
++addToEmployeeTable()
++addToContract()
++reserve()
++place()
+}
+
+class StaffingRequest {
+-RequestID : int
+-Status : String
+-ContractID : int {ContractID}
+-Description : { free text field }
+-ExperienceRequested : int
+-DegreeRequested : String
+-OfferedPay : float
+-ReservedEmployees : [int array] {EmployeeID}
+-PlacedEmployees : [int array] {EmployeeID}
++addToRequestsTable()
++assignToContract()
++reserveCandidat()
++placeEmployee()
++close()
+}
+
+class Contract {
+-ContractID : int
+-ExpirationDate : date
+-Terms : { free text field }
+-ClientName : String
+-ClientAddress : String
+-ClientPhone : String
+-ClientEmail : String
+-ClientContact : String
+-PlacedEmployees : [int array] {EmployeeID}
++addToContractsTable()
++assignToStaffingRequest()
++assignToEmployee()
++addToEmployee_PC()
+}
+
+
+TempEmployee "0..*" --- "1" StaffingRequest
+TempEmployee "0..*" --- "1" Contract
+StaffingRequest "0..*" --- "1" Contract
+
+@enduml
