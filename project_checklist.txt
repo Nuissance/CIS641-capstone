@@ -10,8 +10,8 @@ TODO
 [ ] -analysis
 [ ] -design
 [ ] -user interface
-[ ] -physical architecture
-[ ] -testing
+[x] -physical architecture
+[x] -testing
 [ ] -change management 
 [ ]-conclusion (summary)
 
