@@ -12,7 +12,7 @@ TODO
 [ ] -user interface
 [x] -physical architecture
 [x] -testing
-[x] -change management 
+[x] -change management
 [ ]-conclusion (summary)
 
 [ ]**Project Contents
@@ -26,10 +26,10 @@ TODO
 [x]-activity diagram
 [x]-overview and detail use case descriptions
 [x]-CRC cards
-[ ]-class diagram
-[ ]-sequence diagram
-[ ]-communication diagram
-[ ]-behavioral state machine
+[x]-class diagram
+[x]-sequence diagram
+[x]-communication diagram
+[x]-behavioral state machine
 [ ]-CRUD matrix
 [x]-V&V functional, structural, behavioral models
 
@@ -54,4 +54,3 @@ TODO
 [x]-user acceptance test plan
 
 [x]conversion and chg. mgmt. plan
-
