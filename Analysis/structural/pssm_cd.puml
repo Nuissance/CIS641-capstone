@@ -56,7 +56,7 @@ class Contract {
 }
 
 
-TempEmployee "0..*" --- "1" StaffingRequest
+TempEmployee "0..1" --- "1" StaffingRequest
 TempEmployee "0..*" --- "1" Contract
 StaffingRequest "0..*" --- "1" Contract
 

@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+title "Select Purchase Vehicle"\nSequence Diagram\n
+
+actor Client as C
+actor ContractManager as CM
+actor TemporaryEmployee as TE
+actor PSSMEmployee as PE
+
+
+participant Contract as CO
+participant StaffingRequest as SR
+participant TempEmployee as TEC
+
+
+group Begin
+  C -> CM : Request Staff
+  CM -> CO: ValidateContract()
+  CO --> CM : ValidContract
+  CM -> SR : CreateOutstandingStaffingRequest()
+end
+
+group Staffing
+  PE -> SR : GetStaffingRequest()
+  SR --> PE : StaffingRequest
+  PE -> TEC : GetPossibleCandidates(StaffingRequest)
+  TEC --> PE : ListPossibleCandidates(TemporaryEmployee)
+  PE -> TE : Negotiate Contract
+  TE --> PE : Agreed contract
+  PE -> SR : UpdateStaffingRequest(TemporaryEmployee)
+  SR --> PE : Confirmation Message
+end
+
+group Ending
+  CM -> SR: GetStaffingRequest
+  SR --> CM: StaffingRequest
+  CM -> SR :CloseStaffingRequest(StaffingRequest)
+  SR --> CM : Confirmation Message
+  CM --> C: Notify about Staffing Request
+end
+
+@enduml
