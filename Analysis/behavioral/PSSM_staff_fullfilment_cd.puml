@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+'left to right direction
+title "PSSM staff fullfilment "\nCommunication Diagram\n
+
+:Client: as C
+:ContractManager: as CM
+
+rectangle ":Contract" as CO
+
+
+C -> CM : "1. Request Staff"
+CM -> CO: "2. ValidateContract()"
+CO --> CM : "3. ValidContract"
+
+
+
+rectangle ":StaffingRequest" as SR
+CM -> SR : "4. CreateOutstandingStaffingRequest()"
+
+:PSSMEmployee: as PE
+:TemporaryEmployee: as TE
+rectangle ":TempEmployee" as TEC
+PE -> SR : "5. GetStaffingRequest()"
+SR -down-> PE : "6. StaffingRequest"
+PE -> TEC : "7. GetPossibleCandidates(StaffingRequest)"
+TEC -down-> PE : "8. ListPossibleCandidates(TemporaryEmployee)"
+PE -> TE : "9. Negotiate Contract"
+TE -down-> PE : "10. Agreed contract"
+PE -> SR : "11. UpdateStaffingRequest(TemporaryEmployee)"
+SR -up-> PE : "12. Confirmation Message"
+
+CM -> SR: "13. GetStaffingRequest"
+SR -down-> CM: "14. StaffingRequest"
+CM -> SR : "15. CloseStaffingRequest(StaffingRequest)"
+SR -up-> CM : "16. Confirmation Message"
+CM --> C: "17. Notify about Staffing Request"
+
+
+@enduml

@@ -1,6 +1,6 @@
 @startuml
 skinparam monochrome true
-title "Select Purchase Vehicle"\nSequence Diagram\n
+title "PSSM staff fullfilment"\nSequence Diagram\n
 
 actor Client as C
 actor ContractManager as CM
