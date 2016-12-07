@@ -1,13 +1,15 @@
 @startuml
 skinparam monochrome true
-title "PSSM staff fullfilment Staffing Request"\nState Machine\n
+title PSSM Staffing Request\nState Machine\n
 
-[*] --> Opened : Created Outstanding \nStaffing Request
-Opened --> InProgress: PSSM employee reviewing it
-InProgress --> Fulfilled: Temp Employee Agree
-InProgress --> NotPossible: No Temp Employee Found
-Fulfilled --> Closed : Contract Manager closes Request
-NotPossible --> Closed : Contract Manager closes Request
-Closed --> [*]
+state StaffingRequest {
+  [*] --> Opened : Created Outstanding \nStaffing Request
+  Opened --> InProgress: PSSM\n Employee review
+  InProgress --> Fulfilled: TempEmployee\nAgrees
+  InProgress --> NotPossible: TempEmployee\nNot Found
+  Fulfilled --> Closed : Contract Manager \ncloses Request
+  NotPossible --> Closed : Contract Manager \ncloses Request
+  Closed --> [*]
+}
 
 @enduml
