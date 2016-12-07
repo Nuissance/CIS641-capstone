@@ -1,0 +1,54 @@
+CLASSES
+-------
+
+Contract
+-ContractID         int
+-ContractExpDate    date
+-ContractTerms      <free text field>
+-ClientName         string
+-ClientAddress      string
+-ClientPhone        string
+-ClientEmail        string
+-ClientContactPerson    string
+-PlacedEmployees    <array of int (EmployeeID)>
+
+TempEmployee
+-EmployeeID         int
+-EmployeeName       string
+-EmployeeAddress    string
+-EmployeeEmail      string
+-EmployeePhone      string
+-EmployeeStatus     available, reserved, placed
+-YearsExperience    int
+-Degree             bachelor's, master's, doctorate
+-Qualifications     <free text field>
+-ExpectedPay        float
+-CurrentContract    int (ContractNumber) or NULL
+-PreviousContracts  <array of int (ContractNumber)>
+
+StaffingRequest
+-RequestID          int
+-RequestStatus      open, closed
+-ContractID         int (ContractID)
+-Description        <free text field>
+-ExperienceReq      int
+-DegreeReq          bachelor's, master's, doctorate
+-PayOffer           float
+-ReservedEmployee   int
+-PlacedEmployee     int
+
+
+TEST CASES
+----------
+
+CRUD Contract
+CRUD TempEmployee
+CRUD StaffingRequest
+
+Reserve a candidate for a staffing request -> notifications
+Place an employee for a staffing request
+Close a staffing request -> notifications
+
+
+login/logout + reset password
+
