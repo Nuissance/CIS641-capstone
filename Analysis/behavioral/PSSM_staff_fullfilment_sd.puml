@@ -1,42 +1,61 @@
 @startuml
 skinparam monochrome true
-title "PSSM staff fullfilment"\nSequence Diagram\n
+title PSSM Temporary Staff Fullfilment\nSequence Diagram\n
 
 actor Client as C
-actor ContractManager as CM
-actor TemporaryEmployee as TE
-actor PSSMEmployee as PE
+actor "Contract\nManager" as CM
+actor "Temporary\nEmployee" as TE
+actor "PSSM\nEmployee" as PE
 
 
-participant Contract as CO
-participant StaffingRequest as SR
-participant TempEmployee as TEC
+participant ":Contract" as CO
+participant ":Staffing\nRequest" as SR
+participant ":Temp\nEmployee" as TEC
 
 
-group Begin
-  C -> CM : Request Staff
-  CM -> CO: ValidateContract()
-  CO --> CM : ValidContract
-  CM -> SR : CreateOutstandingStaffingRequest()
+group Client Demand
+  C -> CM : Request Temp Staff
+  CM -> CO: validateContract()
+  group Invalid StaffingRequest
+    CO --> CM : Invalid Contract
+    CM --> C : "unable-to-fill", Why Letter
+  end
+  CO --> CM : Valid Contract
+  CM -> SR : createNewStaffingRequest()
 end
 
-group Staffing
-  PE -> SR : GetStaffingRequest()
+group Placement
+  PE -> SR : getStaffingRequest()
   SR --> PE : StaffingRequest
-  PE -> TEC : GetPossibleCandidates(StaffingRequest)
-  TEC --> PE : ListPossibleCandidates(TemporaryEmployee)
-  PE -> TE : Negotiate Contract
-  TE --> PE : Agreed contract
-  PE -> SR : UpdateStaffingRequest(TemporaryEmployee)
-  SR --> PE : Confirmation Message
+  PE -> TEC : getCandidates(StaffingRequest)
+  group No Qualified Candidate Found
+    TEC -> PE : No Candidate Found
+    PE -> PE : Create "unable-to-fill" Memo
+    PE -> SR : attachMemo()
+    SR --> CM : Contract Manager notification
+    CM -> CO : closeStaffingRequest()
+  end
+  TEC --> PE : Display Candidates
+  PE -> TEC : reserveEmployee(StaffingRequest)
+  TEC --> PE : Employee Reserved
+  PE -> TE : Negotiate Placement
+  group No Placement
+    TE --> PE : Placement Not Agreed
+    PE -> CO : fileContract(SR, bill, memo)
+    CO --> CM : Contract Manager notification
+    CM -> C : Client Notification, "unable-to-fill"
+  end
+  TE --> PE : Placement Agreed
+  PE -> SR : updateStaffingRequest(TempEmployee)
+  SR --> PE : StaffingRequest Updated
 end
 
-group Ending
-  CM -> SR: GetStaffingRequest
-  SR --> CM: StaffingRequest
-  CM -> SR :CloseStaffingRequest(StaffingRequest)
+group Arrangement
+  PE -> TEC : placeEmployee(StaffingRequest)
+  TEC --> PE : Employee Placed
+  CM -> SR : closeStaffingRequest()
   SR --> CM : Confirmation Message
-  CM --> C: Notify about Staffing Request
+  CM --> C: Notify Client, Request Filled
 end
 
 @enduml
