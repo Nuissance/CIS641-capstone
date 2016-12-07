@@ -2,7 +2,8 @@
 skinparam monochrome true
 title "PSSM staff fullfilment Staffing Request"\nState Machine\n
 
-[*] --> Opened : Created Outstanding \nStaffing Request
+[*] --> New : Created \nStaffing Request
+New --> Opened : Contract Manager Open Request
 Opened --> InProgress: PSSM employee reviewing it
 InProgress --> Fulfilled: Temp Employee Agree
 InProgress --> NotPossible: No Temp Employee Found
