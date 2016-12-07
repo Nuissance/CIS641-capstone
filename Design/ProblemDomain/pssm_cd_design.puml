@@ -1,5 +1,5 @@
 @startuml
-left to right direction
+'left to right direction
 skinparam monochrome true
 title Professional and Scientific\nStaff Management\n
 
@@ -22,7 +22,7 @@ package "Problem Domain" {
     -full_cv : String {link to file}
     -staffingRequestList : [StaffingRequest]
   }
-  class PSSMEmployee{
+  class PSSMUser{
     -staffingRequestList : [StaffingRequest]
   }
 
@@ -56,9 +56,9 @@ package "Problem Domain" {
 
   Role "1..*" --- "1" User
   User <|-- TempEmployee
-  User <|-- PSSMEmployee
+  User <|-- PSSMUser
   User <|-- ContractManager
-  PSSMEmployee "1" --- "0..*" StaffingRequest : fulfill
+  PSSMUser "1" --- "0..*" StaffingRequest : fulfill
   TempEmployee "1" --- "0..*" StaffingRequest : accept
   ContractManager "1" --- "0..*" StaffingRequest : manage
   ContractManager "1" --- "0..*" Contract : has

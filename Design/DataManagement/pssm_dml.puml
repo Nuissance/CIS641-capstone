@@ -1,5 +1,5 @@
 @startuml
-'left to right direction
+left to right direction
 skinparam monochrome true
 title Professional and Scientific\nStaff Management\n
 
@@ -7,7 +7,7 @@ package "Problem Domain" {
   class Role
   class User
   class TempEmployee
-  class PSSMEmployee
+  class PSSMUser
   class ContractManager
   class StaffingRequest
   class Contract
@@ -15,9 +15,9 @@ package "Problem Domain" {
 
   Role "1..*" --- "1" User
   User <|-- TempEmployee
-  User <|-- PSSMEmployee
+  User <|-- PSSMUser
   User <|-- ContractManager
-  PSSMEmployee "1" --- "0..*" StaffingRequest : fulfill
+  PSSMUser "1" --- "0..*" StaffingRequest : fulfill
   TempEmployee "1" --- "0..*" StaffingRequest : accept
   ContractManager "1" --- "0..*" StaffingRequest : manage
   ContractManager "1" --- "0..*" Contract : has
@@ -53,7 +53,7 @@ package "Data Management" {
     -staffingRequestList : [StaffingRequest]
     +CRUD()
   }
-  class PSSMEmployeeDAO as "PSSMEmployee Table"{
+  class PSSMUserDAO as "PSSMUser Table"{
     -staffingRequestList : [StaffingRequest]
     +CRUD()
   }
@@ -101,7 +101,7 @@ package "Data Management" {
 
   class StaffingRequestDAM{
     ''-contractManager : ContractManager
-    ''-pssmEmployee : PSSMEmployee
+    ''-PSSMUser : PSSMUser
     ''-tempEmployee : TempEmployee
     ''-contract : Contract
     -staffingRequest : StaffingRequest
@@ -127,7 +127,7 @@ package "Data Management" {
   TempEmployeeDAM  ..>  TempEmployee
 
   TempEmployeeDAO <.. StaffingRequestDAM
-  PSSMEmployeeDAO <.. StaffingRequestDAM
+  PSSMUserDAO <.. StaffingRequestDAM
   StaffingRequestDAO <.. StaffingRequestDAM
   ContractManagerDAO <.. StaffingRequestDAM
   ContractDAO <.. StaffingRequestDAM
@@ -142,8 +142,8 @@ package "Data Management" {
   hide User
   TempEmployee <.. TempEmployeeDAO
   hide TempEmployee
-  PSSMEmployee <.. PSSMEmployeeDAO
-  hide PSSMEmployee
+  PSSMUser <.. PSSMUserDAO
+  hide PSSMUser
   ContractManager <.. ContractManagerDAO
   hide ContractManager
   StaffingRequest <.. StaffingRequestDAO
