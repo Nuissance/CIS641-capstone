@@ -1,0 +1,67 @@
+@startuml
+left to right direction
+skinparam monochrome true
+title Professional and Scientific\nStaff Management\n
+
+package "Problem Domain" {
+  class Role{
+    -id : int
+    -description : string
+  }
+  class User{
+    -id : int
+    -name : String
+    -address : String
+    -phone : String
+    -email : String
+  }
+  class TempEmployee{
+    -qualificationList : [String]
+    -yearsExperience : int
+    -is_available : bool
+    -full_cv : String {link to file}
+    -staffingRequestList : [StaffingRequest]
+  }
+  class PSSMEmployee{
+    -staffingRequestList : [StaffingRequest]
+  }
+
+  class ContractManager{
+    -employee_id : int
+    -contractList : [Contract]
+    -staffingRequestList : [StaffingRequest]
+  }
+
+  class StaffingRequest{
+    -id : int
+    -contract : Contract
+    -qualificationList : [String]
+    -minimum_experience_years : int
+    -start_date : Date
+    -end_date : Date
+    -salary_offer : double
+  }
+
+  class Contract{
+    -id : int
+    -client : String
+    -short_desc : String
+    -field : String
+    -qualificationList : [String]
+    -start_date : Date
+    -end_date : Date
+    -minimum_salary : double
+  }
+
+
+  Role "1..*" --- "1" User
+  User <|-- TempEmployee
+  User <|-- PSSMEmployee
+  User <|-- ContractManager
+  PSSMEmployee "1" --- "0..*" StaffingRequest : fulfill
+  TempEmployee "1" --- "0..*" StaffingRequest : accept
+  ContractManager "1" --- "0..*" StaffingRequest : manage
+  ContractManager "1" --- "0..*" Contract : has
+  Contract "1" --- "0..*" StaffingRequest : has
+}
+@enduml
