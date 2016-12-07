@@ -1,0 +1,154 @@
+@startuml
+'left to right direction
+skinparam monochrome true
+title Professional and Scientific\nStaff Management\n
+
+package "Problem Domain" {
+  class Role
+  class User
+  class TempEmployee
+  class PSSMEmployee
+  class ContractManager
+  class StaffingRequest
+  class Contract
+
+
+  Role "1..*" --- "1" User
+  User <|-- TempEmployee
+  User <|-- PSSMEmployee
+  User <|-- ContractManager
+  PSSMEmployee "1" --- "0..*" StaffingRequest : fulfill
+  TempEmployee "1" --- "0..*" StaffingRequest : accept
+  ContractManager "1" --- "0..*" StaffingRequest : manage
+  ContractManager "1" --- "0..*" Contract : has
+  Contract "1" --- "0..*" StaffingRequest : has
+}
+
+'''
+'' CRUD: Create Read Update Delete, Table contains DB
+''       specific implementation.
+''
+'' CRUD_DAM: Logic of data manipulation using the DAO
+''           Classes
+'''
+package "Data Management" {
+  class RoleDAO as "Role Table"{
+    -id : int
+    -description : string
+    +CRUD()
+  }
+  class UserDAO as "User Table"{
+    -id : int
+    -name : String
+    -address : String
+    -phone : String
+    -email : String
+    +CRUD()
+  }
+  class TempEmployeeDAO as "TempEmployee Table"{
+    -qualificationList : [String]
+    -yearsExperience : int
+    -is_available : bool
+    -full_cv : String {link to file}
+    -staffingRequestList : [StaffingRequest]
+    +CRUD()
+  }
+  class PSSMEmployeeDAO as "PSSMEmployee Table"{
+    -staffingRequestList : [StaffingRequest]
+    +CRUD()
+  }
+  class ContractManagerDAO as "ContractManager Table"{
+    -employee_id : int
+    -contractList : [Contract]
+    -staffingRequestList : [StaffingRequest]
+    +CRUD()
+  }
+
+  class StaffingRequestDAO as "StaffingRequest Table"{
+    -id : int
+    -contract : Contract
+    -qualificationList : [String]
+    -minimum_experience_years : int
+    -start_date : Date
+    -end_date : Date
+    -salary_offer : double
+    +CRUD()
+  }
+
+  class ContractDAO as "Contract Table"{
+    -id : int
+    -client : String
+    -short_desc : String
+    -field : String
+    -qualificationList : [String]
+    -start_date : Date
+    -end_date : Date
+    -minimum_salary : double
+    +CRUD()
+  }
+
+  class UserDAM{
+    -user : User
+    -role : Role
+    +CRUD_DAM()
+  }
+
+  class TempEmployeeDAM{
+    -tempEmployee : TempEmployee
+    +CRUD_DAM()
+    +acceptStaffingRequest()
+  }
+
+  class StaffingRequestDAM{
+    ''-contractManager : ContractManager
+    ''-pssmEmployee : PSSMEmployee
+    ''-tempEmployee : TempEmployee
+    ''-contract : Contract
+    -staffingRequest : StaffingRequest
+    +CRUD_DAM()
+    +changeRequestStatus()
+    +sendNotificationsToActors()
+
+  }
+  class ContractDAM{
+    -contractManager : ContractManager
+    -contract : contract
+    +CRUD_DAM()
+    +validateContractConstraints(StaffingRequest)
+  }
+
+
+  RoleDAO  <..  UserDAM
+  UserDAO  <..  UserDAM
+  UserDAM  ..> User
+  UserDAM  ..> Role
+
+  TempEmployeeDAO  <..  TempEmployeeDAM
+  TempEmployeeDAM  ..>  TempEmployee
+
+  TempEmployeeDAO <.. StaffingRequestDAM
+  PSSMEmployeeDAO <.. StaffingRequestDAM
+  StaffingRequestDAO <.. StaffingRequestDAM
+  ContractManagerDAO <.. StaffingRequestDAM
+  ContractDAO <.. StaffingRequestDAM
+
+  ContractManagerDAO <.. ContractDAM
+  ContractDAO <.. ContractDAM
+  ContractDAM ..> Contract
+
+  Role <.. RoleDAO
+  hide Role
+  User <.. UserDAO
+  hide User
+  TempEmployee <.. TempEmployeeDAO
+  hide TempEmployee
+  PSSMEmployee <.. PSSMEmployeeDAO
+  hide PSSMEmployee
+  ContractManager <.. ContractManagerDAO
+  hide ContractManager
+  StaffingRequest <.. StaffingRequestDAO
+  hide StaffingRequest
+  Contract <.. ContractDAO
+  hide Contract
+}
+@enduml

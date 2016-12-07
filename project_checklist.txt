@@ -9,7 +9,7 @@ TODO
 [x] -effort
 [ ] -analysis
 [ ] -design
-[ ] -user interface
+[x] -user interface
 [x] -physical architecture
 [x] -testing
 [x] -change management
@@ -37,10 +37,9 @@ TODO
 [ ]-data management layer
 [ ]-class diagram?
 
-[ ]HCI design
-[ ]-use scenarios
-[ ]-windows navigation diagrams
-[ ]-storyboards
+[x]HCI design
+[x]-storyboards
+[x]-windows navigation diagrams
 
 [x]physical architecture design
 [x]-system deployment diagram
